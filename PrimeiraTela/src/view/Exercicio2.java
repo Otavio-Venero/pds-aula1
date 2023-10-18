@@ -8,6 +8,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -59,10 +61,24 @@ public class Exercicio2 extends JFrame {
 		textSobrenome.setColumns(10);
 		
 		JButton btnValidar = new JButton("Validar");
+		btnValidar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String nome = textPrimeiroNome.getText();
+				String sobrenome = textSobrenome.getText();
+				//JOptionPane.showMessageDialog(null, "O nome completor é: "+nome " " +sobrenome);
+				JOptionPane.showMessageDialog(null, "O nome completor é: "+nome +" " +sobrenome);
+			}
+		});
 		btnValidar.setBounds(160, 118, 89, 23);
 		contentPane.add(btnValidar);
 		
 		JButton btnLimpar = new JButton("Limpar");
+		btnLimpar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textPrimeiroNome.setText("");
+				textSobrenome.setText("");
+			}
+		});
 		btnLimpar.setBounds(160, 153, 89, 23);
 		contentPane.add(btnLimpar);
 		
