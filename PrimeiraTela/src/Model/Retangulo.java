@@ -2,12 +2,12 @@ package Model;
 
 public class Retangulo {
 
-	public float calculop(float base, float altura) {
-		float perimetro = 2*(base + altura);
+	public float calculop(float basef, float alturaf) {
+		float perimetro = 2*(basef + alturaf);
 		return perimetro;
 	}
-	public float calculoa(float base, float altura) {
-		float area = base * altura;
+	public float calculoa(float basef, float alturaf) {
+		float area = basef * alturaf;
 		return area;
 	}
 	
