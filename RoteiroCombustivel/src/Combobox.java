@@ -294,6 +294,26 @@ public class Combobox extends JFrame {
 		contentPane.add(btnNovoCalculo);
 		
 		JButton btnCalcular = new JButton("Calcular");
+		btnCalcular.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//Converte o texto deigitado a String
+				String oleoD = textoleodisel.getText();
+				String gasC = textgascomum.getText();
+				String gasA = textgasaditivada.getText();
+				String etanol = textetanol.getText();
+				
+				//Converte a String em numero
+				Float oleoDF = Float.valueOf(oleoD);
+				Float gasCF = Float.valueOf(gasC);
+				Float gasAF = Float.valueOf(gasA);
+				Float etanolF = Float.valueOf(etanol);
+				
+				//Importa a classe
+				Calculos calc = new Calculos();
+				
+				
+			}
+		});
 		btnCalcular.setBounds(29, 427, 89, 23);
 		contentPane.add(btnCalcular);
 	}
