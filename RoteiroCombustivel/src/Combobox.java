@@ -1,26 +1,24 @@
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
+//import java.awt.GridLayout;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
 import modelo.Calculos;
 import modelo.Combustivel;
-
-import javax.swing.JButton;
-import javax.swing.border.EtchedBorder;
-import java.awt.Color;
-//import java.awt.GridLayout;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.JRadioButton;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.awt.event.ActionEvent;
-import javax.swing.ButtonGroup;
 
 public class Combobox extends JFrame {
 
@@ -301,16 +299,22 @@ public class Combobox extends JFrame {
 				String gasC = textgascomum.getText();
 				String gasA = textgasaditivada.getText();
 				String etanol = textetanol.getText();
+				String quantidadelitros = textQL.getText();
 				
 				//Converte a String em numero
 				Float oleoDF = Float.valueOf(oleoD);
 				Float gasCF = Float.valueOf(gasC);
 				Float gasAF = Float.valueOf(gasA);
 				Float etanolF = Float.valueOf(etanol);
+				Float QuantLitrosF = Float.valueOf(quantidadelitros);
+				
+				Combustivel tipo = (Combustivel) comboBoxdepre.getSelectedItem();
 				
 				//Importa a classe
 				Calculos calc = new Calculos();
-				
+				Float totalcombus = calc.calc_combustivel( oleoDF, gasCF, gasAF, etanolF, tipo, QuantLitrosF);
+				String totalC = String.valueOf(totalcombus);
+				lblTC.setText("R$ " + totalC);
 				
 			}
 		});
