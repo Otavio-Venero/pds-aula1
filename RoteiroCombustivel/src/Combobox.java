@@ -312,10 +312,17 @@ public class Combobox extends JFrame {
 				
 				//Importa a classe
 				Calculos calc = new Calculos();
-				Float totalcombus = calc.calc_combustivel( oleoDF, gasCF, gasAF, etanolF, tipo, QuantLitrosF);
+				Float totalcombus = calc.calc_combustivel(oleoDF, gasCF, gasAF, etanolF, tipo, QuantLitrosF);
 				String totalC = String.valueOf(totalcombus);
 				lblTC.setText("R$ " + totalC);
 				
+				String ol500 = textFrasco500.getText();
+				String ol1l = textFrasco1.getText();
+				
+				Float ol500F = Float.valueOf(ol500);
+				Float ol1lF = Float.valueOf(ol1l);
+				
+				Float totaloleo500 = calc.calc_oleo500(ol500F, ol1lF);
 			}
 		});
 		btnCalcular.setBounds(29, 427, 89, 23);
