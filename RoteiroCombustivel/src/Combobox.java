@@ -164,12 +164,12 @@ public class Combobox extends JFrame {
 		
 		JLabel lblVPF500 = new JLabel("-");
 		lblVPF500.setHorizontalAlignment(SwingConstants.CENTER);
-		lblVPF500.setBounds(299, 50, 46, 14);
+		lblVPF500.setBounds(289, 50, 76, 14);
 		OleoMotor.add(lblVPF500);
 		
 		JLabel lblVPF1L = new JLabel("-");
 		lblVPF1L.setHorizontalAlignment(SwingConstants.CENTER);
-		lblVPF1L.setBounds(299, 81, 46, 14);
+		lblVPF1L.setBounds(297, 81, 68, 14);
 		OleoMotor.add(lblVPF1L);
 		
 		JLabel lblTotaloleo = new JLabel("Total Oleo");
@@ -178,13 +178,8 @@ public class Combobox extends JFrame {
 		
 		JLabel lblTOF500 = new JLabel("-");
 		lblTOF500.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTOF500.setBounds(427, 50, 46, 14);
+		lblTOF500.setBounds(427, 50, 56, 14);
 		OleoMotor.add(lblTOF500);
-		
-		JLabel lblTOF1L = new JLabel("-");
-		lblTOF1L.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTOF1L.setBounds(427, 81, 46, 14);
-		OleoMotor.add(lblTOF1L);
 		
 		JPanel Abastecimento = new JPanel();
 		Abastecimento.setBorder(new TitledBorder(null, "Abastecimento", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -255,7 +250,7 @@ public class Combobox extends JFrame {
 		
 		JLabel lblResultadoTP = new JLabel("-");
 		lblResultadoTP.setHorizontalAlignment(SwingConstants.CENTER);
-		lblResultadoTP.setBounds(162, 105, 46, 14);
+		lblResultadoTP.setBounds(152, 105, 86, 14);
 		FormasPagamento.add(lblResultadoTP);
 		
 		JButton btnFechar = new JButton("Fechar");
@@ -281,7 +276,6 @@ public class Combobox extends JFrame {
 				lblVPF500.setText(" - ");
 				lblVPF1L.setText(" - ");
 				lblTOF500.setText(" - ");
-				lblTOF1L.setText(" - ");
 				textQL.setText(" ");
 				lblTC.setText(" - ");
 				textdias.setText(" ");
@@ -317,12 +311,49 @@ public class Combobox extends JFrame {
 				lblTC.setText("R$ " + totalC);
 				
 				String ol500 = textFrasco500.getText();
-				String ol1l = textFrasco1.getText();
+				String quantFml = textF500.getText();
+				String olF1 = textFrasco1.getText();
+				String quantFl = textF1L.getText();
 				
 				Float ol500F = Float.valueOf(ol500);
-				Float ol1lF = Float.valueOf(ol1l);
+				Float quantFmlF = Float.valueOf(quantFml);
+				Float olF1F = Float.valueOf(olF1);
+				Float quantFlF = Float.valueOf(quantFl);
 				
-				Float totaloleo500 = calc.calc_oleo500(ol500F, ol1lF);
+				Float totaloleo500 = calc.calc_oleoml(ol500F, quantFmlF);
+				Float totaloleo1l = calc.calc_oleo1l(olF1F, quantFlF);
+				lblVPF500.setText("R$ " + totaloleo500);
+				lblVPF1L.setText("R$ " + totaloleo1l);
+				
+				Float totaloleo = calc.calc_oleo(totaloleo500, totaloleo1l);
+				String totaloleoS = String.valueOf(totaloleo);
+				
+				lblTOF500.setText(totaloleoS);
+				
+				Float total = calc.calc_total(totalcombus, totaloleo);
+				
+				//textdias
+				//rdbtnavista
+				//rdbtnaprazo
+				//lblResultadoTP
+				
+				Float total_desc = calc.calc_desc(total);
+				Float total_atrazo = calc.calc_atrazo(total);
+				
+				String dia = textdias.getText();
+				int diaI = Integer.valueOf(dia);
+				
+				if(rdbtnavista.isSelected()) {
+					lblResultadoTP.setText("R$ " + total_desc);			
+				}else if(rdbtnaprazo.isSelected()) {
+					if(diaI > 30) {
+						lblResultadoTP.setText("R$ " + total_atrazo);
+					}else if(diaI <= 30) {
+						lblResultadoTP.setText("R$ " + total);
+					}
+				}
+				
+				
 			}
 		});
 		btnCalcular.setBounds(29, 427, 89, 23);
