@@ -1,8 +1,8 @@
-<<<<<<< HEAD:RoteiroCombustivel/src/Combobox.java
-import java.awt.Color;
-=======
+
+
+
 package visao;
->>>>>>> main:RoteiroCombustivel/src/visao/Combobox.java
+
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,8 +24,6 @@ import javax.swing.border.TitledBorder;
 import modelo.Calculos;
 import modelo.Combustivel;
 
-<<<<<<< HEAD:RoteiroCombustivel/src/Combobox.java
-=======
 import javax.swing.JButton;
 import javax.swing.border.EtchedBorder;
 import java.awt.Color;
@@ -39,7 +37,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ButtonGroup;
 
->>>>>>> main:RoteiroCombustivel/src/visao/Combobox.java
+
 public class Combobox extends JFrame {
 
 	private static final long serialVersionUID = 1L;
