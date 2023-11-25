@@ -140,6 +140,7 @@ public class CalculadoraInvestimentosGrid extends JFrame {
 				double JurosaoMesd = Double.valueOf(JurosaoMes);
 				//importa outra classe (investimento)
 				Investimento calculo = new Investimento(NumdeMesesi, JurosaoMesd, JurosaoMesd);
+			
 				
 				double Total = calculo.calculaTotal(DepositoMensald,NumdeMesesi,JurosaoMesd);
 				String sTotal = String.format("%.2f", Total);
