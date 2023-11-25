@@ -1,3 +1,4 @@
+package visao;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -18,7 +19,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JRadioButton;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.ButtonGroup;
 
