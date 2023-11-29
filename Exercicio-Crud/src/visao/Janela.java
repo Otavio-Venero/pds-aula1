@@ -144,6 +144,9 @@ public class Janela extends JFrame {
 		btnExcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int idx_linha = table.getSelectedRow();
+				if(idx_linha < 0) {
+					JOptionPane.showMessageDialog(null, "Selecione um campo para excluir");
+				}
 				listaPessoas.remove(idx_linha);
 				atualizarJTableModel();
 				limparCampos();
