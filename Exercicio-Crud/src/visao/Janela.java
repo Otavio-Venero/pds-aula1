@@ -36,6 +36,11 @@ public class Janela extends JFrame {
 	private JTextField textField;
 	private JLabel lblAltura;
 	private JTextField textAltura;
+	
+	
+	
+	Double peso = (double) 0.0;
+	Double altura = (double) 0.0;
 
 	/**
 	 * Launch the application.
@@ -102,7 +107,7 @@ public class Janela extends JFrame {
 		txtCPF = new JTextField();
 		txtCPF.setBounds(212, 36, 165, 20);
 		contentPane.add(txtCPF);
-		txtCPF.setColumns(12);
+		txtCPF.setColumns(30);
 		
 		JButton btnAdicionar = new JButton("Adicionar");
 		btnAdicionar.addActionListener(new ActionListener() {
@@ -111,18 +116,16 @@ public class Janela extends JFrame {
 				String cpf= txtCPF.getText();
 				String idade = textIdade.getText();
 				String telefone = textTelefone.getText();
-				String peso = textPeso.getText();
-				String altura = textAltura.getText();
-				
-				
-				
+				Double peso = Double.valueOf(textPeso.getText());			
+				Double altura = Double.valueOf(textAltura.getText());			
+
 				Pessoa p = new Pessoa();
 				p.setNome(nome);
 				p.setCpf(Integer.parseInt(cpf));
 				p.setIdade(Integer.parseInt(idade));
 				p.setTelefone(Integer.parseInt(telefone));
-				p.setPeso(Integer.parseInt(peso));
-				p.setAltura(Double.parseDouble(altura));
+				p.setPeso(peso);
+				p.setAltura(altura);
 				
 				listaPessoas.add(p);
 				
@@ -152,6 +155,24 @@ public class Janela extends JFrame {
 		btnAlterar = new JButton("Alterar");
 		btnAlterar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int linhaSelecionada = table.getSelectedRow();
+
+		        if (linhaSelecionada != -1) {
+		            Pessoa alt = listaPessoas.get(linhaSelecionada);
+
+		            alt.setNome(txtNome.getText());
+		            alt.setCpf(Integer.parseInt(txtCPF.getText()));
+		            alt.setTelefone(Integer.parseInt(textTelefone.getText()));
+		            alt.setIdade(Integer.parseInt(textIdade.getText()));
+		            alt.setPeso(Float.parseFloat(textPeso.getText()));
+		            alt.setAltura(Float.parseFloat(textAltura.getText()));
+
+		            limparCampos();
+		            atualizarJTableModel();
+		        } else {
+		            JOptionPane.showMessageDialog(null, "Selecione uma pessoa para editar.");
+		        }
+				
 			}
 		});
 		btnAlterar.setBounds(271, 124, 89, 23);
@@ -164,7 +185,7 @@ public class Janela extends JFrame {
 		textTelefone = new JTextField();
 		textTelefone.setBounds(10, 92, 109, 20);
 		contentPane.add(textTelefone);
-		textTelefone.setColumns(13);
+		textTelefone.setColumns(20);
 		
 		JLabel lblIdade = new JLabel("Idade");
 		lblIdade.setBounds(140, 67, 62, 14);

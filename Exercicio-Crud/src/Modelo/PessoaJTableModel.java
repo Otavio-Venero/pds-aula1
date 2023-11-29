@@ -12,14 +12,17 @@ public class PessoaJTableModel extends AbstractTableModel{
 		this.lista=lista;
 	}
 	
+	@Override
 	public int getRowCount() {
 		return this.lista.size();
 	}
 
+	@Override
 	public int getColumnCount() {
 		return colunas.length;
 	}
 
+	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		Pessoa p = lista.get(rowIndex);
 		if(columnIndex == 0) {
@@ -38,6 +41,7 @@ public class PessoaJTableModel extends AbstractTableModel{
 		return null;
 	}
 	
+	@Override
 	public String getColumnName(int column) {
 		return colunas[column];
 	}

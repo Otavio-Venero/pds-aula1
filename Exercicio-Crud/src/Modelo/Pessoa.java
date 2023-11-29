@@ -6,7 +6,7 @@ public class Pessoa {
 	private int cpf;
 	private int telefone;
 	private int idade;
-	private int peso;
+	private double peso;
 	private double altura;
 	
 	
@@ -34,10 +34,10 @@ public class Pessoa {
 	public void setTelefone(int telefone) {
 		this.telefone = telefone;
 	}
-	public int getPeso() {
+	public double getPeso() {
 		return peso;
 	}
-	public void setPeso(int peso) {
+	public void setPeso(double peso) {
 		this.peso = peso;
 	}
 	public double getAltura() {
